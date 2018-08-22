@@ -12,6 +12,13 @@ class App extends Component {
       {name: '김철수', phone: '010-0000-0002', id: 1},
       {name: '이영희', phone: '010-0000-0003', id: 2}
     ],
+    keword: '', 
+  }
+
+  handleChange = (e) => {
+    this.setState({
+      keword: e.target.value,
+    });
   }
 
   handleCreate = (data) => {
@@ -52,7 +59,9 @@ class App extends Component {
     return (
       <div>
         <PhoneForm onCreate={this.handleCreate} />
-        <PhoneInfoList data={this.state.information} onRemove={this.handleRemove} onUpdate={this.handleUpdate} />
+        <input value={this.state.keword} onChange={this.handleChange} placeholder='검색...' />
+        <PhoneInfoList data={this.state.information.filter(
+          info => info.name.indexOf(this.state.keword) > -1)} onRemove={this.handleRemove} onUpdate={this.handleUpdate} />
       </div>
     );
   }
