@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 class PhoneForm extends Component {
-    
+
     state = {
         name: '',
         phone: '',
@@ -27,7 +27,7 @@ class PhoneForm extends Component {
             <form onSubmit={this.handleSubmit}>
                 <input name='name' placeholder='이름' onChange={this.handleChange} value={this.state.name}  />
                 <input name='phone' placeholder='전화번호' onChange={this.handleChange} value={this.state.phone} />
-                <button type='submin'>등록</button>
+                <button type='submit'>등록</button>
             </form>
         );
     }
