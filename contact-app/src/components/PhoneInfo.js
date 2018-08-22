@@ -8,6 +8,14 @@ class PhoneInfo extends Component {
         phone: ''
     }
 
+    shouldComponentUpdate(nextProps, nextState) {
+        if(this.state !== nextState){
+            return true;
+        }
+        
+        return this.props.info !== nextProps.info;
+    }
+
      handleRemove = () => {
         const {info, onRemove} = this.props;
         onRemove(info.id);
@@ -55,32 +63,34 @@ class PhoneInfo extends Component {
             margin: '8px',
         };
 
-    return (
-        <div style={style}>
-            {
-                editing ? (
-                    <Fragment>
-                        <div>
-                            <input name='name' onChange={this.handleChange} value={this.state.name} /> 
-                        </div>
-                        <div>
-                            <input name='phone' onChange={this.handleChange} value={this.state.phone} /> 
-                        </div>
-                    </Fragment>  
-                ) : (
-                    <Fragment>
-                        <div><b>{name}</b></div>
-                        <div>{phone}</div>
-                    </Fragment>
-                )
-            }
-            <button onClick={this.handleRemove}>삭제</button>
-            <button onClick={this.handleToggleEdit}>
-                {editing ? '적용' : '수정'}
-            </button>
-        </div>
-    );
-  }
+        console.log(name);
+
+        return (
+            <div style={style}>
+                {
+                    editing ? (
+                        <Fragment>
+                            <div>
+                                <input name='name' onChange={this.handleChange} value={this.state.name} /> 
+                            </div>
+                            <div>
+                                <input name='phone' onChange={this.handleChange} value={this.state.phone} /> 
+                            </div>
+                        </Fragment>  
+                    ) : (
+                        <Fragment>
+                            <div><b>{name}</b></div>
+                            <div>{phone}</div>
+                        </Fragment>
+                    )
+                }
+                <button onClick={this.handleRemove}>삭제</button>
+                <button onClick={this.handleToggleEdit}>
+                    {editing ? '적용' : '수정'}
+                </button>
+            </div>
+        );
+    }
 }
 
 export default PhoneInfo;
