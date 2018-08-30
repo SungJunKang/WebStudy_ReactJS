@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import ContactInfo from './ContactInfo';
 import ContactDetails from './ContactDetails';
 import update from 'react-addons-update';
+import ContactCreate from './ContactCreate';
 
 export default class Contact extends Component {
 
@@ -63,7 +64,7 @@ export default class Contact extends Component {
                     }
                 }
             )
-        })
+        });
     }
 
     render() {
@@ -84,7 +85,8 @@ export default class Contact extends Component {
                 <h1>Contacts</h1>
                 <input name="keyword" placeholder="Search" value={this.state.keyword} onChange={this.handleChange} />
                 <div>{mapToComponents(this.state.contactData)}</div>
-                <ContactDetails isSelected={this.state.selectedKey != -1} contact={this.state.contactData[this.state.selectedKey]} />
+                <ContactDetails isSelected={this.state.selectedKey !== -1} contact={this.state.contactData[this.state.selectedKey]} />
+                <ContactCreate onCreate={this.handleCreate} />
             </div>
         );
     }
