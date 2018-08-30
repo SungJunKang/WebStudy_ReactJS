@@ -86,9 +86,16 @@ export default class Contact extends Component {
         return (
             <div>
                 <h1>Contacts</h1>
-                <input name="keyword" placeholder="Search" value={this.state.keyword} onChange={this.handleChange} />
+                <input 
+                    name="keyword" 
+                    placeholder="Search" 
+                    value={this.state.keyword} 
+                    onChange={this.handleChange} />
                 <div>{mapToComponents(this.state.contactData)}</div>
-                <ContactDetails isSelected={this.state.selectedKey !== -1} contact={this.state.contactData[this.state.selectedKey]} onRemove={this.handleRemove} onEdit={this.handleEdit} />
+                <ContactDetails 
+                    isSelected={this.state.selectedKey !== -1} 
+                    contact={this.state.contactData[this.state.selectedKey]} 
+                    onRemove={this.handleRemove} onEdit={this.handleEdit} />
                 <ContactCreate onCreate={this.handleCreate} />
             </div>
         );
